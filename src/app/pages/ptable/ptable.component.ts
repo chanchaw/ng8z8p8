@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectItem } from 'primeng/components/common/selectitem';
 
 @Component({
   selector: 'app-ptable',
-  templateUrl: './ptable.component.html',
+  templateUrl: './resize.component.html',
   styleUrls: ['./ptable.component.css']
 })
 export class PtableComponent implements OnInit {
@@ -13,6 +14,9 @@ export class PtableComponent implements OnInit {
     { vin:"宝马",year:"1949",brand:"750",color:"香槟色"},
     { vin:"特斯拉",year:"2008",brand:"Model S",color:"红色"},
   ];
+
+  brands: SelectItem[];
+
 
   cols: any[];
 
@@ -26,6 +30,21 @@ export class PtableComponent implements OnInit {
           { field: 'brand', header: 'Brand' },
           { field: 'color', header: 'Color' }
       ];
+
+      this.brands = [
+        {label: 'Audi', value: 'Audi'},
+        {label: 'BMW', value: 'BMW'},
+        {label: 'Fiat', value: 'Fiat'},
+        {label: 'Ford', value: 'Ford'},
+        {label: 'Honda', value: 'Honda'},
+        {label: 'Jaguar', value: 'Jaguar'},
+        {label: 'Mercedes', value: 'Mercedes'},
+        {label: 'Renault', value: 'Renault'},
+        {label: 'VW', value: 'VW'},
+        {label: 'Volvo', value: 'Volvo'}
+    ];
+
+
   }
 
 }

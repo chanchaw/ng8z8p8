@@ -5,12 +5,15 @@ import { PtableRoutingModule } from './ptable-routing.module';
 import { PtableComponent } from './ptable.component';
 
 import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/dropdown';
+
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [PtableComponent],
   imports: [
     CommonModule,
-    PtableRoutingModule,TableModule
+    PtableRoutingModule,TableModule,FormsModule,ReactiveFormsModule,DropdownModule
   ]
 })
 export class PtableModule { }
