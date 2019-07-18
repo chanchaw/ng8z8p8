@@ -1,4 +1,77 @@
-<h3 class="first">Basic</h3>
+<h3>本页面演示 PrimeNG 的 table 组件的两个功能：编辑、列宽调整</h3>
+<h3>在没有列宽调整功能时表格内的下拉可以正常使用，但是追加了列宽调整功能后就不正常了</h3>
+<h3>下面两个表格演示了该问题，要如何解决？有必要的话：QQ = 409223171</h3>
+<br>
+<h3>表格有编辑状态，没有列宽调整状态，Brand 的下拉功能可以正常使用：</h3>
+<p-table [value]="cars">
+    <ng-template pTemplate="header">
+        <tr>
+            <th pResizableColumn>Vin</th>
+            <th pResizableColumn>Year</th>
+            <th pResizableColumn>Brand</th>
+            <th pResizableColumn>Color</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData>
+        <tr>
+
+            <td pEditableColumn>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="rowData.vin">
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.vin}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+
+
+            <td pEditableColumn>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="rowData.year">
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.year}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+
+
+            <td pEditableColumn>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <p-dropdown [options]="brands" [(ngModel)]="rowData.brand" [style]="{'width':'100%'}"></p-dropdown>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.brand}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+
+
+
+
+            <td pEditableColumn>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="rowData.color">
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.color}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+
+
+        </tr>
+    </ng-template>
+</p-table>
+
+<br>
+
+<h3 class="first">同时有编辑功能、列宽调整功能，Brand 的下拉功能不可用：</h3>
 <p-table [value]="cars" [resizableColumns]="true">
     <ng-template pTemplate="header">
         <tr>
@@ -65,20 +138,87 @@
     </ng-template>
 </p-table>
 <br>
-<h3>Dynamic Columns</h3>
-<p-table [columns]="cols" [value]="cars">
+
+
+<!--
+<h3>动态创建列：</h3>
+<p-table [columns]="cols" [value]="cars" [resizableColumns]="true">
     <ng-template pTemplate="header" let-columns>
         <tr>
-            <th *ngFor="let col of columns">
+            <th *ngFor="let col of columns" pResizableColumn>
                 {{col.header}}
             </th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr>
-            <td *ngFor="let col of columns">
-                    {{rowData[col.field]}}
+            <td *ngFor="let col of columns" pEditableColumn class="ui-resizable-column">
+                <p-cellEditor *ngIf="col.field !== 'brand'">
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="rowData[col.field]">
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData[col.field]}}
+                    </ng-template>
+                </p-cellEditor>
+
+                
+                <p-cellEditor *ngIf="col.field === 'brand'">
+                    <ng-template pTemplate="input">
+                        <p-dropdown [options]="brands" [(ngModel)]="rowData.brand" [style]="{'width':'100%'}"></p-dropdown>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{rowData.brand}}
+                    </ng-template>
+                </p-cellEditor>
+            
+
+
             </td>
+
+
         </tr>
     </ng-template>
 </p-table>
+
+<br>
+<h3>只有列宽度设置，没有编辑状态</h3>
+<p-table [value]="cars" [resizableColumns]="true">
+    <ng-template pTemplate="header">
+        <tr>
+            <th pResizableColumn>Vin</th>
+            <th pResizableColumn>Year</th>
+            <th pResizableColumn>Brand</th>
+            <th pResizableColumn>Color</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData>
+        <tr>
+
+            <td class="ui-resizable-column">
+                {{rowData.vin}}
+            </td>
+
+
+            <td class="ui-resizable-column">
+                {{rowData.year}}
+            </td>
+
+
+            <td class="ui-resizable-column">
+                {{rowData.brand}}
+            </td>
+
+
+            <td class="ui-resizable-column">
+                {{rowData.color}}
+            </td>
+
+
+        </tr>
+    </ng-template>
+</p-table>
+
+<br>
+
+-->
