@@ -1,7 +1,11 @@
 import { Directive, HostListener, ElementRef } from '@angular/core';
 
+/**
+ * 使用方法：<p cusDragdrop style="cursor:move">test-dragdrop works!</p>
+ * 鼠标放到该标签上鼠标样式被显示为可移动的样式，按下鼠标左键拖动松开即可移动 p 标签了
+ */
 @Directive({
-  selector: '[appDragdrop]'
+  selector: '[cusDragdrop]'
 })
 export class DragdropDirective {
 
