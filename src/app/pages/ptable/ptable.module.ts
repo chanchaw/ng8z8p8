@@ -8,12 +8,13 @@ import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 @NgModule({
   declarations: [PtableComponent],
   imports: [
     CommonModule,
-    PtableRoutingModule,TableModule,FormsModule,ReactiveFormsModule,DropdownModule
+    PtableRoutingModule,TableModule,FormsModule,ReactiveFormsModule,DropdownModule,NgZorroAntdModule
   ]
 })
 export class PtableModule { }

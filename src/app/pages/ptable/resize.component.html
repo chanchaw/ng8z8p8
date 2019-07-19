@@ -72,7 +72,7 @@
 <br>
 
 <h3 class="first">同时有编辑功能、列宽调整功能，Brand 的下拉功能不可用：</h3>
-<p-table [value]="cars" [resizableColumns]="true" columnResizeMode="expand">
+<p-table  [value]="cars" [resizableColumns]="true" columnResizeMode="fit">
     <ng-template pTemplate="header">
         <tr>
             <th pResizableColumn>Vin</th>
@@ -108,7 +108,7 @@
             </td>
 
 
-            <td pEditableColumn class="ui-resizable-column">
+            <td pEditableColumn  class="ui-resizable-column">
                 <p-cellEditor>
                     <ng-template pTemplate="input">
                         <p-dropdown [options]="brands" [(ngModel)]="rowData.brand" [style]="{'width':'100%'}"></p-dropdown>
