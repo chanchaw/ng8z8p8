@@ -1,0 +1,9 @@
+/* 下面两个设置是取消溢出隐藏，以便在有列宽调整功能的同时显示下拉组件 */
+.ui-table-resizable>.ui-table-wrapper {
+    overflow: visible !important;
+}
+
+.ui-table-resizable .ui-table-thead>tr>th, .ui-table-resizable .ui-table-tfoot>tr>td,
+.ui-table-resizable .ui-table-tbody > tr > td {
+    overflow: visible !important;
+}
