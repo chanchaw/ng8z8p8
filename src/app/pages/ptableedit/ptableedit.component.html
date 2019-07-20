@@ -6,8 +6,8 @@
             <tr>
                 <th pResizableColumn>品种</th>
                 <th pResizableColumn>品名</th>
-                <th pResizableColumn>匹数</th>
-                <th pResizableColumn>单价</th>
+                <th pResizableColumn style="width: 62px">匹数</th>
+                <th pResizableColumn style="width: 70px">单价</th>
                 <th pResizableColumn>金额</th>
                 <th pResizableColumn>日期</th>
                 <th pResizableColumn>备注</th>
@@ -63,7 +63,7 @@
                 <td pEditableColumn class="ui-resizable-column">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <input nz-input type="text" [(ngModel)]="rowData.goodsname">
+                            <input type="text" pInputText [(ngModel)]="rowData.goodsname"/>
                         </ng-template>
                         <ng-template pTemplate="output">
                             {{rowData.goodsname}}
@@ -75,11 +75,9 @@
                 <td pEditableColumn  class="ui-resizable-column">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <!-- <input nz-input type="text" [(ngModel)]="rowData.qty"> -->
 
-                            <nz-input-number (ngModelChange)="calSum(rowData,rowIndex)" 
-                                [(ngModel)]="rowData.qty" [nzMin]="0" 
-                                [nzMax]="100000" [nzStep]="1"></nz-input-number>
+                            <input type="text" pInputText [(ngModel)]="rowData.qty"
+                                onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" />
 
                         </ng-template>
                         <ng-template pTemplate="output">
@@ -92,10 +90,14 @@
                 <td pEditableColumn class="ui-resizable-column">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
+<!-- 
+                            <nz-input-number 
+                            [(ngModel)]="rowData.price" (ngModelChange)="calSum(rowData,rowIndex)"  [nzMin]="0" 
+                                [nzMax]="10000000" [nzStep]="1"></nz-input-number> -->
 
-                            <nz-input-number (ngModelChange)="calSum(rowData,rowIndex)" 
-                            [(ngModel)]="rowData.price" [nzMin]="0" 
-                                [nzMax]="10000000" [nzStep]="1"></nz-input-number>
+                            <input type="text" pInputText [(ngModel)]="rowData.price"
+                            onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" />
+
 
                         </ng-template>
                         <ng-template pTemplate="output">
@@ -103,28 +105,29 @@
                         </ng-template>
                     </p-cellEditor>
                 </td>
-                
 
-                <td pEditableColumn class="ui-resizable-column">
+
+                <!-- <td pEditableColumn class="ui-resizable-column">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <!-- <input pInputText type="text" [(ngModel)]="rowData.sum"> -->
                             <nz-input-number [(ngModel)]="rowData.sum" [nzMin]="0" [nzMax]="100000" [nzStep]="1"></nz-input-number>
                         </ng-template>
                         <ng-template pTemplate="output">
                             {{rowData.sum}}
                         </ng-template>
                     </p-cellEditor>
-                </td>
+                </td> -->
+
+                <td class="ui-resizable-column">{{rowData.sum}}</td>
 
                 
                 <td pEditableColumn class="ui-resizable-column">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="rowData.date">
+                            <nz-date-picker [(ngModel)]="rowData.date" (ngModelChange)="onChange($event)"></nz-date-picker>
                         </ng-template>
                         <ng-template pTemplate="output">
-                            {{rowData.date}}
+                            {{rowData.date | date:'yyyy-MM-dd'}}
                         </ng-template>
                     </p-cellEditor>
                 </td>
@@ -132,10 +135,10 @@
                 <td pEditableColumn class="ui-resizable-column">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="rowData.remark">
+                            <input type="text" pInputText [(ngModel)]="rowData.remark"/>
                         </ng-template>
                         <ng-template pTemplate="output">
-                            {{rowData.remark}}
+                            <span class="ellipsis">{{rowData.remark}}</span>
                         </ng-template>
                     </p-cellEditor>
                 </td>

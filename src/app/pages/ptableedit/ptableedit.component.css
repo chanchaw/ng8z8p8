@@ -5,3 +5,9 @@
 ::ng-deep .ui-table-resizable>.ui-table-wrapper {
     overflow: visible !important;
 }
+
+.ellipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

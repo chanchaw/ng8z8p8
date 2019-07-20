@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class PtableeditComponent implements OnInit {
 
   tableData:Model[] = [
-    { category:"flr",categoryName:"法兰绒",goodsname:"双面法兰绒",qty:10,price:2.5,sum:25,date:"2019-07-20",remark:"AAABBB"},
-    { category:"shr",categoryName:"珊瑚绒",goodsname:"北极绒",qty:20,price:3,sum:60,date:"2019-05-20",remark:"这里是珊瑚绒"},
-    { category:"cr",categoryName:"超柔",goodsname:"麂皮绒",qty:35,price:2,sum:70,date:"2020-07-20",remark:"很贵的哦"}
+    { category:"flr",categoryName:"法兰绒",goodsname:"双面法兰绒",qty:10,price:2.5,sum:25,date:new Date(),remark:"AAABBB"},
+    { category:"shr",categoryName:"珊瑚绒",goodsname:"北极绒",qty:20,price:3,sum:60,date:new Date(),remark:"这里是珊瑚绒"},
+    { category:"cr",categoryName:"超柔",goodsname:"麂皮绒",qty:35,price:2,sum:70,date:new Date(),remark:"很贵的哦"}
   ];
 
   categories:Category[] = [
@@ -42,11 +42,12 @@ export class PtableeditComponent implements OnInit {
   }
 
   calSum(rowData,rowIndex:number){
-    console.log("rowData.price/qty = " + rowData.price.toString() + "/" + rowData.qty.toString());
-    console.log("this.tableData[rowIndex].price/qty = " + this.tableData[rowIndex].price.toString()+ "/"
-      + this.tableData[rowIndex].qty.toString());
+    // console.log("rowData.price/qty = " + rowData.price.toString() + "/" + rowData.qty.toString());
+    // console.log("this.tableData[rowIndex].price/qty = " + this.tableData[rowIndex].price.toString()+ "/"
+    //   + this.tableData[rowIndex].qty.toString());
 
-    this.tableData[rowIndex].sum = this.tableData[rowIndex].price * this.tableData[rowIndex].qty;
+    this.tableData[rowIndex].sum = this.tableData[rowIndex].price 
+      * this.tableData[rowIndex].qty;
   }
 
 }
@@ -54,7 +55,7 @@ export class PtableeditComponent implements OnInit {
 
 export class Model{
   category:string;goodsname:string;qty:number;price:number;sum:number;
-  date:string;remark:string;
+  date:Date;remark:string;
   categoryName:string;
 }
 

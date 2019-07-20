@@ -8,13 +8,15 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [PtableeditComponent],
   imports: [
     CommonModule,
     PtableeditRoutingModule,NgZorroAntdModule,TableModule,DropdownModule,
-    FormsModule,ReactiveFormsModule
+    FormsModule,ReactiveFormsModule,InputTextModule,CalendarModule
   ]
 })
 export class PtableeditModule { }
