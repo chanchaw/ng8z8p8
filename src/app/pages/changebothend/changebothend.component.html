@@ -1,0 +1,7 @@
+<p>
+  Start editing to see some magic happen :)
+</p>
+<input ngModel (ngModelChange)="value$.next($event)">
+<p>Previous value: {{ previousValue }}</p>
+<p>Current value: {{ currentValue }}</p>
+<p><button #theButton (click)="onClick($event)">点击发射</button></p>

@@ -1,13 +1,13 @@
-import { PtableeditComponent } from './ptableedit.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ChangebothendComponent } from './changebothend.component';
 
 const routes: Routes = [
-  { path:'',component:PtableeditComponent}
+  { path:'',component:ChangebothendComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PtableeditRoutingModule { }
+export class ChangebothendRoutingModule { }

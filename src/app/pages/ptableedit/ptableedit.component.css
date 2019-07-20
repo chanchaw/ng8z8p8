@@ -1,0 +1,7 @@
+::ng-deep .ur-table-resizable > .ui-table-wrapper, td{
+    overflow: visible !important;
+}
+
+::ng-deep .ui-table-resizable>.ui-table-wrapper {
+    overflow: visible !important;
+}

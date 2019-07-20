@@ -1,0 +1,147 @@
+<div>
+    <button nz-button (click)="onClick($event)">打印数据</button>
+</div>
+<p-table  [value]="tableData" [resizableColumns]="true" columnResizeMode="fit">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pResizableColumn>品种</th>
+                <th pResizableColumn>品名</th>
+                <th pResizableColumn>匹数</th>
+                <th pResizableColumn>单价</th>
+                <th pResizableColumn>金额</th>
+                <th pResizableColumn>日期</th>
+                <th pResizableColumn>备注</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+            <tr>
+    
+                <td pEditableColumn class="ui-resizable-column">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+
+                            <nz-select style="width: 100%;" nzShowSearch nzAllowClear
+                                nzPlaceHolder="选择品种"
+                                [(ngModel)]="rowData.category"
+                                (ngModelChange)="onCategoryChange(rowData)"
+                            >
+                                <nz-option *ngFor="let item of categories" nzLabel="{{item.sid}} - {{item.name}}" 
+                                    nzValue="{{item.sid}}"></nz-option>
+                            </nz-select>
+
+                            <!-- <nz-select
+                                style="width: 100%;"
+                                nzAllowClear nzShowSearch
+                                nzPlaceHolder="选择品种"
+                                [(ngModel)]="rowData.category"
+                                [nzCustomTemplate]="tplCategory"
+                                >
+
+                                <nz-option *ngFor="let item of categories" nzCustomContent 
+                                    nzLabel="{{item.sid}} - {{item.name}}" nzValue="{{item.sid}}">
+
+                                    {{item.sid}} - {{item.name}}
+                                </nz-option>
+
+                            </nz-select>
+
+                            <ng-template #tplCategory let-selected>
+                                <span>{{ selected.nzLabel }}</span>
+                            </ng-template> -->
+
+
+
+
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.categoryName}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+    
+    
+                <td pEditableColumn class="ui-resizable-column">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input nz-input type="text" [(ngModel)]="rowData.goodsname">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.goodsname}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+    
+    
+                <td pEditableColumn  class="ui-resizable-column">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <!-- <input nz-input type="text" [(ngModel)]="rowData.qty"> -->
+
+                            <nz-input-number (ngModelChange)="calSum(rowData,rowIndex)" 
+                                [(ngModel)]="rowData.qty" [nzMin]="0" 
+                                [nzMax]="100000" [nzStep]="1"></nz-input-number>
+
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.qty}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+    
+    
+                <td pEditableColumn class="ui-resizable-column">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+
+                            <nz-input-number (ngModelChange)="calSum(rowData,rowIndex)" 
+                            [(ngModel)]="rowData.price" [nzMin]="0" 
+                                [nzMax]="10000000" [nzStep]="1"></nz-input-number>
+
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.price}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                
+
+                <td pEditableColumn class="ui-resizable-column">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <!-- <input pInputText type="text" [(ngModel)]="rowData.sum"> -->
+                            <nz-input-number [(ngModel)]="rowData.sum" [nzMin]="0" [nzMax]="100000" [nzStep]="1"></nz-input-number>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.sum}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+                
+                <td pEditableColumn class="ui-resizable-column">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="rowData.date">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.date}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+                <td pEditableColumn class="ui-resizable-column">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="rowData.remark">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{rowData.remark}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+    
+    
+            </tr>
+        </ng-template>
+    </p-table>
+    <br>
