@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: 'ptable', loadChildren: () => import('./pages/ptable/ptable.module').then(m => m.PtableModule) },
   { path: 'testDragdrop', loadChildren: () => import('./pages/test-dragdrop/test-dragdrop.module').then(m => m.TestDragdropModule) },
   { path: 'ptableedit', loadChildren: () => import('./pages/ptableedit/ptableedit.module').then(m => m.PtableeditModule) },
-  { path: 'changebothend', loadChildren: () => import('./pages/changebothend/changebothend.module').then(m => m.ChangebothendModule) }
+  { path: 'changebothend', loadChildren: () => import('./pages/changebothend/changebothend.module').then(m => m.ChangebothendModule) },
+  { path: 'ptablerowedit', loadChildren: () => import('./pages/ptablerowedit/ptablerowedit.module').then(m => m.PtableroweditModule) }
 ];
 
 @NgModule({
