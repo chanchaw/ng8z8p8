@@ -10,13 +10,14 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 @NgModule({
   declarations: [PtableeditComponent],
   imports: [
     CommonModule,
     PtableeditRoutingModule,NgZorroAntdModule,TableModule,DropdownModule,
-    FormsModule,ReactiveFormsModule,InputTextModule,CalendarModule
+    FormsModule,ReactiveFormsModule,InputTextModule,CalendarModule,MultiSelectModule
   ]
 })
 export class PtableeditModule { }

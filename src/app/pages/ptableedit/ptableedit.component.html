@@ -2,6 +2,17 @@
     <button nz-button (click)="onClick($event)">打印数据</button>
 </div>
 <p-table  [value]="tableData" [resizableColumns]="true" columnResizeMode="fit">
+        <ng-template pTemplate="caption">
+            <div style="display: flex;align-items: center">
+    
+                <button pButton type="button" icon="pi pi-pencil" class="ui-button-info"></button> &nbsp;
+                <button pButton type="button" icon="pi pi-times" class="ui-button-info"></button> &nbsp;
+    
+                <p-multiSelect [options]="cols" [(ngModel)]="displayedCols" optionLabel="header"
+                    selectedItemsLabel="共显示{0}列" [style]="{minWidth: '200px'}" defaultLabel="选择显示的列"></p-multiSelect>
+            </div>
+        </ng-template>
+
         <ng-template pTemplate="header">
             <tr>
                 <th pResizableColumn>品种</th>

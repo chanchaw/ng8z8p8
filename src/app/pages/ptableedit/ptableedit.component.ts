@@ -19,6 +19,8 @@ export class PtableeditComponent implements OnInit {
     { sid:"cr",name:"超柔"},
   ];
 
+  displayedCols:any;
+
   constructor() { }
 
   ngOnInit() {
